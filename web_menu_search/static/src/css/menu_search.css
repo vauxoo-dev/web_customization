@@ -10,4 +10,18 @@
   background-image: -ms-linear-gradient(top, #646060, #262626);
   background-image: -o-linear-gradient(top, #646060, #262626);
   background-image: linear-gradient(to bottom, #646060, #262626);
+  margin: auto;
+}
+.openerp .search_input {
+	background: url('image.png') no-repeat scroll right center #FFFFFF;
+	border: 1px solid #DDD;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #888;
+	color: #666;
+	float: left;
+	width: 200px;
+	height: 17px;
+	outline: none;
+	margin-left: 5px;
+    margin-top: 3px;
 }

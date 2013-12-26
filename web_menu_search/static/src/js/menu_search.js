@@ -18,7 +18,7 @@ openerp.web_menu_search = function(instance) {
 	    },
 	    do_search: function(value){
 	      var self = this;
-	      return new instance.web.Model("ir.ui.menu").get_func("get_access_menus")(self.session.uid).pipe(
+	      return new instance.web.Model("ir.ui.menu").call("get_access_menus", [false, self.session.user_context]).pipe(
                     _.bind(function(res) {
                     var auto_list = []
                     var test_list = []
@@ -48,6 +48,8 @@ openerp.web_menu_search = function(instance) {
                                                                                   },
                                                       select: function (event, ui) {
                                                                     window.location.href = ui.item.value;
+                                                                    $("#menu_name").removeData()
+                                                                    $("#menu_name").clearInputs()
                                                                     return false;
                                                                                     },
                                                       //search: function( event, ui ) {

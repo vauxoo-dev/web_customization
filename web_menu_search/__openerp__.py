@@ -22,7 +22,7 @@
 
 {
     'name': 'OpenERP Menu Search',
-    'version': '1.0',
+    'version': '1.1',
     'category': 'Menu Search',
     'sequence': 1,
     'summary': 'OpenERP Menu Search',

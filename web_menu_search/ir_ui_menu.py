@@ -22,24 +22,27 @@
 
 from osv import osv, fields
 
+from tools.translate import _
+from openerp import SUPERUSER_ID
+
 class ir_ui_menu(osv.osv):
     _inherit = 'ir.ui.menu'
     _columns = {
                 'menu_code': fields.char('Menu Code', size=128)
                 }
     
-    def get_access_menus(self, cr, uid, ids, parent_menu_id=False, context=None):
+    def get_access_menus(self, cr, uid, parent_menu_id=False, context=None):
         res = []
         menu_ids = self.search(cr, uid, [('parent_id', '=', parent_menu_id)], context=context)
         for menu_obj in self.browse(cr, uid, menu_ids, context=context):
             if menu_obj.action:
                 menu_data = {
                              'id': menu_obj.id,
-                             'name': menu_obj.name,
+                             'name': _(menu_obj.name),
                              'action': menu_obj.action.id
                              }
                 res.append(menu_data)
-            result = self.get_access_menus(cr, uid, ids, menu_obj.id, context=context)
+            result = self.get_access_menus(cr, uid, menu_obj.id, context=context)
             res.extend(result)
         return res
     
